@@ -1,0 +1,96 @@
+.container {
+    height: 100%;
+    padding: 60px 7px 7px 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container > :first-child {
+    flex: 1;
+    width: 100%;
+}
+
+.apps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    align-items: start;
+    height: fit-content;
+    border-radius: 25pt;
+    /* background-color: hsla(0, 0%, 0%, 0.1); */
+    /* backdrop-filter: blur(7px); */
+    width: 100%;
+    padding: 15px;
+}
+
+.apps > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.apps > div.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.apps > div.big > img {
+    width: 103px;
+    height: 103px;
+}
+
+.apps > div > span {
+    font-size: 7px;
+    color: #fff;
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+}
+
+.apps > div > img {
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+}
+
+.dots {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dots > div {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: hsla(0, 0%, 100%, 0.15);
+    cursor: pointer;
+}
+
+.dots > div.active {
+    background-color: #fff;
+}
+
+.isle {
+    border-radius: 25pt;
+    background-color: hsla(0, 0%, 0%, 0.3);
+    backdrop-filter: blur(7px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.isle > img {
+    user-select: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+}

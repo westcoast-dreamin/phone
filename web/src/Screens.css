@@ -5,6 +5,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    cursor: grab;
+}
+
+.container:active {
+    cursor: grabbing;
 }
 
 .container > :first-child {
@@ -31,6 +36,36 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+    position: relative;
+}
+
+.apps > div > div,
+.isle > div > div {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 17px;
+    height: 17px;
+    background-color: #e6f2ff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.apps > div > div::after,
+.isle > div > div::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 1px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 100dvw;
+}
+
+.apps > div.move {
+    animation: shake 0.1s linear alternate infinite;
 }
 
 .apps > div.big {
@@ -49,6 +84,7 @@
     text-align: center;
     display: block;
     margin-top: 5px;
+    font-weight: 600;
 }
 
 .apps > div > img {
@@ -58,11 +94,16 @@
 }
 
 .dots {
-    margin: 20px 0;
+    margin: 5px 0 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    border-radius: 25pt;
+    background-color: hsla(0, 0%, 0%, 0.3);
+    backdrop-filter: blur(7px);
+    padding: 8px;
+    cursor: default;
 }
 
 .dots > div {
@@ -86,11 +127,25 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    cursor: default;
 }
 
-.isle > img {
+.isle > div > img {
     user-select: none;
     cursor: pointer;
     width: 44px;
     height: 44px;
+}
+
+.isle > div.move {
+    animation: shake 0.1s linear alternate infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(2deg);
+    }
 }

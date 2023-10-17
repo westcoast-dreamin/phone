@@ -1,8 +1,38 @@
+/* Import apple fonts from /assets/fonts */
+
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("/assets/fonts/sf-pro-display_regular.wof");
+}
+
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("/assets/fonts/sf-pro-display_semibold.wof");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "SF Pro Text";
+    src: url("/assets/fonts/sf-pro-text_regular.wof");
+}
+
+@font-face {
+    font-family: "SF Pro Text";
+    src: url("/assets/fonts/sf-pro-text_semibold.wof");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "SF Pro Icons";
+    src: url("/assets/fonts/SFProIcons_regular.wof");
+}
+
 * {
     margin: 0;
     padding: 0;
     font-size: 100%;
     box-sizing: border-box;
+    font-family: "SF Pro Text", sans-serif;
 }
 
 html,

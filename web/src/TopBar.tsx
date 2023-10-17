@@ -3,7 +3,9 @@ import "./TopBar.css";
 export default function TopBar() {
     return (
         <div className="dynamicIsland">
-            <span className="time">11:52</span>
+            <span className="time">
+                {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }).slice(0, 5)}
+            </span>
 
             <div className="notch">
                 <div className="speaker"></div>

@@ -1,3 +1,4 @@
+import { defaultApps, defaultIsleApps } from "./config";
 import { useEffect, useState } from "react";
 import "./Screens.css";
 
@@ -5,77 +6,13 @@ export default function Screens() {
     const [screen, setScreen] = useState(0);
     const [move, setMove] = useState(false);
     const [start, setStart] = useState({
-        x: null,
-        y: null,
+        x: 0,
+        y: 0,
     });
 
-    const isleApps = ["messages", "mail", "safari", "phone"];
-    const screens = [
-        [
-            "facetime",
-            "calendar",
-            "photos",
-            "camera",
-            "music",
-            "notes",
-            "reminders",
-            "clock",
-            "news",
-            "tv",
-            "podcasts",
-            "app-store",
-            "maps",
-            "health",
-            "wallet",
-            "settings",
-        ],
-        ["wallet", "photos", "fitness", "music", "shortcuts", "find-my", "app-store", "measure", "pages", "safari"],
-        [
-            "contacts",
-            "clock",
-            "magnifier",
-            "phone",
-            "notes",
-            "maps",
-            "calendar",
-            "numbers",
-            "translate",
-            "keynote",
-            "homekit",
-        ],
-        [
-            "settings",
-            "freeform",
-            "tips",
-            "garageband",
-            "health",
-            "news",
-            "siri",
-            "stocks",
-            "files",
-            "mail",
-            "clips",
-            "itunes-store",
-            "weather",
-            "compass",
-        ],
-        [
-            "voicememo",
-            "imovie",
-            "messages",
-            "watch",
-            "reminders",
-            "camera",
-            "tv",
-            "podcasts",
-            "books",
-            "calculator",
-            "apple-store",
-            "facetime",
-        ],
-    ];
-
-    const delta = 6;
+    const isleApps = defaultIsleApps;
+    const screens = defaultApps;
+    const delta = 20;
 
     const leftToRight = () => {
         console.log("leftToRight");
@@ -117,9 +54,6 @@ export default function Screens() {
                 });
             }}
             onMouseUp={(e) => {
-                // Detect if the user has dragged from left to right, right to left, top to bottom or bottom to top
-                // If two or more directions are detected, the one with the greatest displacement will be chosen
-
                 const endX = e.pageX;
                 const endY = e.pageY;
 
@@ -131,24 +65,13 @@ export default function Screens() {
 
                 if (absDiffX > delta || absDiffY > delta) {
                     if (absDiffX > absDiffY) {
-                        if (diffX > 0) {
-                            leftToRight();
-                        } else {
-                            rightToLeft();
-                        }
+                        if (diffX > 0) leftToRight();
+                        else rightToLeft();
                     } else {
-                        if (diffY > 0) {
-                            topToBottom();
-                        } else {
-                            bottomToTop();
-                        }
+                        if (diffY > 0) topToBottom();
+                        else bottomToTop();
                     }
                 }
-
-                setStart({
-                    x: null,
-                    y: null,
-                });
             }}
             onContextMenu={(e) => {
                 if (move) setMove(false);
@@ -169,6 +92,7 @@ export default function Screens() {
                                             src={`/assets/apps/${app}.png`}
                                             alt={`./assets/apps/${app}.png`}
                                         />
+
                                         <span>{app.charAt(0).toUpperCase() + app.slice(1)}</span>
 
                                         {move && (
@@ -187,8 +111,8 @@ export default function Screens() {
                             {screens.map((s, i) => (
                                 <div
                                     key={i}
-                                    className={`dot ${screen === i && "active"}`}
                                     onClick={() => setScreen(i)}
+                                    className={`dot ${screen === i && "active"}`}
                                 />
                             ))}
                         </div>

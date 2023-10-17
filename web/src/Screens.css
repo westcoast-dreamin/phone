@@ -93,6 +93,14 @@
     cursor: pointer;
 }
 
+.apps > div.move > img {
+    cursor: grab;
+}
+
+.apps > div.move:active > img {
+    cursor: grabbing;
+}
+
 .dots {
     margin: 5px 0 15px;
     display: flex;

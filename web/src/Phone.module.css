@@ -25,16 +25,15 @@
     --background: #3a4252;
     --background-2: #1e232e;
     --band: #1c1c1f;
-    --backgroud-image: url("/assets/backgrounds/wallpaper2.jpeg");
-}
+    --backgroud-image: url("https://ucarecdn.com/a20178fc-1c13-4c80-b4db-da154f4a8b8f/");
 
-.phone {
     position: fixed;
     bottom: 50px;
     right: 50px;
     height: 670px;
-    aspect-ratio: 9 / 19.5;
+    aspect-ratio: 9 / 19.5 !important;
     z-index: 1;
+    animation: slideIn 0.2s ease-in-out;
 }
 
 .buttons > div {
@@ -69,7 +68,7 @@
     background-color: var(--background);
     box-shadow: 0 0.1em 0.4em rgba(0, 0, 0, 0.5) inset;
     border-radius: 36pt;
-    padding: 4px;
+    padding: 2px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -114,7 +113,7 @@
     height: 100%;
     background-color: #000004;
     border-radius: 35pt;
-    padding: 8px;
+    padding: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,4 +139,13 @@
     left: 0;
     z-index: -1;
     border-radius: 55pt;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

@@ -1,4 +1,4 @@
-import { defaultApps, defaultIsleApps } from "./config";
+import { apps, defaultApps, defaultIsleApps } from "./config";
 import { useEffect, useState } from "react";
 import "./Screens.css";
 
@@ -73,7 +73,7 @@ export default function Screens() {
                     }
                 }
             }}
-            onContextMenu={(e) => {
+            onContextMenu={() => {
                 if (move) setMove(false);
                 else setMove(true);
             }}
@@ -86,14 +86,17 @@ export default function Screens() {
                         <div>
                             <div className="apps">
                                 {s.map((app, index) => (
-                                    <div className={`${index === 22 ? "big" : ""} ${move ? "move" : ""}`} key={app}>
+                                    <div
+                                        className={`${index === 22 ? "big" : ""} ${move ? "move" : ""}`}
+                                        key={apps[app].id}
+                                    >
                                         <img
                                             draggable={false}
-                                            src={`/assets/apps/${app}.png`}
-                                            alt={`./assets/apps/${app}.png`}
+                                            src={`https://ucarecdn.com/${apps[app].image}/`}
+                                            alt={apps[app].name}
                                         />
 
-                                        <span>{app.charAt(0).toUpperCase() + app.slice(1)}</span>
+                                        <span>{apps[app].name}</span>
 
                                         {move && (
                                             <div
@@ -108,7 +111,7 @@ export default function Screens() {
                         </div>
 
                         <div className="dots">
-                            {screens.map((s, i) => (
+                            {screens.map((_, i) => (
                                 <div
                                     key={i}
                                     onClick={() => setScreen(i)}
@@ -121,10 +124,10 @@ export default function Screens() {
                             {isleApps.map((app) => (
                                 <div className={`${move ? "move" : ""}`}>
                                     <img
-                                        key={app}
                                         draggable={false}
-                                        src={`/assets/apps/${app}.png`}
-                                        alt={`./assets/apps/${app}.png`}
+                                        key={apps[app].id}
+                                        src={`https://ucarecdn.com/${apps[app].image}/`}
+                                        alt={apps[app].name}
                                     />
 
                                     {move && <div></div>}
